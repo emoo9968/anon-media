@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANON Media - Etkinlik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* SIFIRLAMA */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ANA SAYFA İLE AYNI ARKA PLAN */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(180deg, #0b0598 0%, #030130 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* İçeriğin navbarın altında akması için */
+        }
+
+        /* NAVBAR - ANA SAYFADAKİYLE BİREBİR AYNI */
+        nav {
+            background-color: #000000;
+            height: 40px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px; 
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 16px; 
+        }
+        .logo-anon {
+            color: #ff0000; 
+            font-weight: 900;
+        }
+        .logo-media {
+            color: #ffffff;
+            font-weight: 700;
+            margin-left: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px; 
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 10px; 
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap; 
+            transition: color 0.3s ease;
+        }
+        
+                /* Aktif olan (bulunduğumuz) sayfanın sekmesi sürekli kırmızı kalır */
+        .nav-links a.active {
+            color: #ff0000;
+        }
+
+        /* Telefonda tam parmakla basma (tıklama) anında renk tepkisi verir */
+        .nav-links a:active {
+            color: #cc0000;
+        }
+
+        /* ETKİNLİK SAYFASI İÇERİK ALANI */
+        .coming-soon-container {
+            flex: 1; /* Sayfanın geri kalan yüksekliğini kaplar */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ff0000; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* Geri Dön Butonu */
+        .back-button {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 5px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .back-button:hover {
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR EKLENDİ -->
+        <nav>
+        <a href="index.html" class="logo">
+            <span class="logo-anon">ANON</span><span class="logo-media">Media</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <!-- Etkinlik sayfasında olduğumuz için "Etkinlik" kırmızı kalacak -->
+            <a href="etkinlik.html" class="active">Etkinlik</a>
+        </div>
+    </nav>
+
+    <!-- ETKİNLİK İÇERİĞİ -->
+    <div class="coming-soon-container">
+        <h1>Çok Yakında</h1>
+        <p>Etkinlik detayları ve kayıt bilgileri hazırlanıyor.</p>
+        <a href="index.html" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+
+</body>
+</html>
