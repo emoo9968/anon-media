@@ -82,8 +82,14 @@
             transition: color 0.3s ease;
         }
         
-        .nav-links a:hover {
-            color: #ff0000; 
+                /* Aktif olan (bulunduğumuz) sayfanın sekmesi sürekli kırmızı kalır */
+        .nav-links a.active {
+            color: #ff0000;
+        }
+
+        /* Telefonda tam parmakla basma (tıklama) anında renk tepkisi verir */
+        .nav-links a:active {
+            color: #cc0000;
         }
 
         /* GÖRSEL ALANI (Esnek 16:9 Oran) */
@@ -120,10 +126,11 @@
             line-height: 1.4;
         }
         
-        .highlight {
+                .highlight {
             color: #ff0000;
+            white-space: nowrap; /* Kelimelerin alt satıra bölünmesini kesin olarak engeller */
         }
-        
+      
         .subtitle {
             font-size: 15px;
             color: rgba(255, 255, 255, 0.85);
@@ -212,8 +219,9 @@
 
     <!-- TANITIM YAZILARI VE İÇERİK -->
     <div class="content-area">
-        <h1 class="main-title">Yeni Nesil Medya Deneyimine <span class="highlight">Hazır Olun</span></h1>
-        
+<h1 class="main-title">Yeni Nesil Medya Deneyimine<br><span class="highlight">Hazır Olun</span></h1>
+
+      
         <p class="subtitle">
             ANON Media B1C konferans ve özel tanıtım lansmanı, ANON'un geleceğine dair detaylı bir proje sunumunu ve eğitici bir anlatımı kapsayacaktır. Heyecan verici içerikler seni bekliyor.
         </p>
