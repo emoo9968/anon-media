@@ -2,18 +2,12 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANON Media - Etkinlik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ANON Media - Etkinlik Detayları</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* SIFIRLAMA */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ANA SAYFA İLE AYNI ARKA PLAN */
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(180deg, #0b0598 0%, #030130 100%);
@@ -21,128 +15,203 @@
             color: #ffffff;
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* İçeriğin navbarın altında akması için */
+            flex-direction: column; 
+            overflow-x: hidden;
         }
 
-        /* NAVBAR - ANA SAYFADAKİYLE BİREBİR AYNI */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030130; }
+        ::-webkit-scrollbar-thumb { background: #ff0000; border-radius: 4px; }
+
         nav {
-            background-color: #000000;
-            height: 40px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10px; 
-            position: relative;
-            z-index: 10;
+            background-color: #000000; height: 40px; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 0 10px; position: relative; z-index: 10;
         }
 
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            font-size: 16px; 
-        }
-        .logo-anon {
-            color: #ff0000; 
-            font-weight: 900;
-        }
-        .logo-media {
-            color: #ffffff;
-            font-weight: 700;
-            margin-left: 3px;
-        }
+        .logo { text-decoration: none; display: flex; align-items: center; font-size: 16px; }
+        .logo-anon { color: #ff0000; font-weight: 900; }
+        .logo-media { color: #ffffff; font-weight: 700; margin-left: 3px; }
 
-        .nav-links {
-            display: flex;
-            gap: 10px; 
-        }
-        
+        .nav-links { display: flex; gap: 10px; }
         .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 10px; 
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            white-space: nowrap; 
-            transition: color 0.3s ease;
+            color: #ffffff; text-decoration: none; font-size: 10px; font-weight: 400;
+            letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; transition: color 0.3s ease;
         }
-        
-                /* Aktif olan (bulunduğumuz) sayfanın sekmesi sürekli kırmızı kalır */
-        .nav-links a.active {
-            color: #ff0000;
+        .nav-links a.active { color: #ff0000; }
+        .nav-links a:active { color: #cc0000; }
+
+        .event-top-info {
+            width: 100%; max-width: 800px; margin: 0 auto; 
+            padding: 25px 20px; text-align: left; 
         }
 
-        /* Telefonda tam parmakla basma (tıklama) anında renk tepkisi verir */
-        .nav-links a:active {
-            color: #cc0000;
+        .event-date-title {
+            color: #ffffff; font-size: 18px; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 15px; border-bottom: 2px solid #ff0000;
+            display: inline-block; padding-bottom: 5px;
         }
 
-        /* ETKİNLİK SAYFASI İÇERİK ALANI */
-        .coming-soon-container {
-            flex: 1; /* Sayfanın geri kalan yüksekliğini kaplar */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        .time-boxes { display: flex; gap: 10px; }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #ff0000; padding: 10px 12px; border-radius: 4px; flex: 1; 
         }
 
-        h1 {
-            font-size: 32px;
-            font-weight: 900;
-            color: #ff0000; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+        .time-box span {
+            display: block; font-size: 10px; color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
         }
 
-        p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 1px;
-            margin-bottom: 30px;
+        .time-box strong { font-size: 13px; color: #ffffff; font-weight: 700; white-space: nowrap; }
+
+        .details-container {
+            flex: 1; width: 100%; max-width: 800px; margin: 0 auto; 
+            padding: 10px 20px 40px 20px; 
         }
 
-        /* Geri Dön Butonu */
-        .back-button {
-            display: inline-block;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 5px;
-            transition: color 0.3s, border-color 0.3s;
+        .section-title {
+            font-size: 16px; font-weight: 900; color: #ff0000; text-transform: uppercase;
+            letter-spacing: 1.5px; margin-bottom: 15px; margin-top: 30px; 
         }
 
-        .back-button:hover {
-            color: #ff0000;
-            border-color: #ff0000;
+        .event-description {
+            font-size: 13px; color: rgba(255, 255, 255, 0.85); line-height: 1.7;
+            background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        .timeline { display: flex; flex-direction: column; gap: 12px; }
+
+        .timeline-item {
+            display: flex; background: rgba(0, 0, 0, 0.5); border-radius: 6px;
+            overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-time {
+            background-color: #ff0000; color: #ffffff; font-weight: 900; padding: 12px;
+            min-width: 65px; display: flex; align-items: center; justify-content: center; font-size: 13px;
+        }
+
+        .timeline-content {
+            padding: 12px 15px; display: flex; align-items: center; font-size: 13px; font-weight: 700;
+        }
+
+        .content-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 15px; 
+        } 
+
+        .content-card {
+            background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid #ff0000; padding: 18px; border-radius: 6px;
+        }
+
+        .content-card h3 { font-size: 15px; color: #ffffff; margin-bottom: 8px; }
+        .content-card p { font-size: 12px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+
+        .rules-container {
+            background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #ff0000; padding: 20px; border-radius: 6px; margin-bottom: 20px;
+        }
+
+        .rules-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+
+        .rules-list li {
+            display: flex; align-items: flex-start; font-size: 13px;
+            color: rgba(255, 255, 255, 0.85); line-height: 1.6;
+        }
+
+        .rules-list li span {
+            background-color: #ff0000; color: #ffffff; font-weight: 900; min-width: 22px;
+            height: 22px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 11px; margin-right: 12px; margin-top: 1px;
+        }
+
+        .rules-list li strong { color: #ffffff; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR EKLENDİ -->
-        <nav>
+    <nav>
         <a href="index.html" class="logo">
             <span class="logo-anon">ANON</span><span class="logo-media">Media</span>
         </a>
         <div class="nav-links">
             <a href="index.html">Ana Sayfa</a>
-            <!-- Etkinlik sayfasında olduğumuz için "Etkinlik" kırmızı kalacak -->
             <a href="etkinlik.html" class="active">Etkinlik</a>
         </div>
     </nav>
 
-    <!-- ETKİNLİK İÇERİĞİ -->
-    <div class="coming-soon-container">
-        <h1>Çok Yakında</h1>
-        <p>Etkinlik detayları ve kayıt bilgileri hazırlanıyor.</p>
-        <a href="index.html" class="back-button">Ana Sayfaya Dön</a>
+    <div class="event-top-info">
+        <h2 class="event-date-title">12 Ekim</h2>
+        <div class="time-boxes">
+            <div class="time-box">
+                <span>Başlangıç</span>
+                <strong>Akşam 19:00</strong>
+            </div>
+            <div class="time-box">
+                <span>Bitiş</span>
+                <strong>Gece 23:00</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="details-container">
+        
+        <h2 class="section-title">Lansman Vizyonu</h2>
+        <div class="event-description">
+            ANON Media olarak, sıradanlığın ötesine geçen içeriklerle dolu yeni yayın dönemimizi başlatıyoruz. Bu özel gösterimde; daha önce hiç açıklanmamış projelerin ilk detayları, yeni yayın vizyonumuz ve özel bir sürprizin sunumu gerçekleştirilecek.
+        </div>
+
+        <h2 class="section-title">Etkinlik Akışı</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">19:00</div>
+                <div class="timeline-content">Açılış ve B1C Proje Sunumu</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">20:30</div>
+                <div class="timeline-content">Özel İçerik Gösterimi (İlk Bakış)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">22:00</div>
+                <div class="timeline-content">Gelecek Planları ve Kapanış Paneli</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Neler Bekleniyor?</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Yeni Projeler</h3>
+                <p>Yakında kanalda yer alacak yeni oyun videoları, müzik içerikleri ve çok daha fazlası sadece burada paylaşılacak.</p>
+            </div>
+            <div class="content-card">
+                <h3>Özel Gösterimler</h3>
+                <p>Dublajlı oyunu, karanlık hikâyeleri ve profesyonel oynanış tarzımızı sunacağımız ön gösterimi izleme fırsatı yakalayın.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Katılım Şartları</h2>
+        <div class="rules-container">
+            <ul class="rules-list">
+                <li>
+                    <span>1</span> 
+                    <div>Etkinliğe katılmak için aktif bir <strong>ANON Media ekip üyesi</strong> olmanız şarttır.</div>
+                </li>
+                <li>
+                    <span>2</span> 
+                    <div>Geçmişte veya güncel olarak <strong>en az bir projenin</strong> (dublaj, kurgu, içerik üretimi vb.) içinde yer almış olmanız gerekmektedir.</div>
+                </li>
+                <li>
+                    <span>3</span> 
+                    <div>Etkinlik tarihi olan 12 Ekim itibarıyla ekipteki görevinizin <strong>devam ediyor olması</strong> zorunludur.</div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
 </body>

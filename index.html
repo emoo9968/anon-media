@@ -2,16 +2,11 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANON Media B1C Lansman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ANON Media - B1C Lansmanı</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* SIFIRLAMA VE TEMEL AYARLAR */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -19,228 +14,123 @@
             background-attachment: fixed;
             color: #ffffff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
-            display: block; 
         }
 
-        /* ÖZEL SCROLLBAR (Kaydırma Çubuğu) TASARIMI */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030130; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ff0000; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #cc0000; 
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030130; }
+        ::-webkit-scrollbar-thumb { background: #ff0000; border-radius: 4px; }
 
-        /* NAVBAR (Üst Menü) */
         nav {
-            background-color: #000000;
-            height: 40px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10px; 
-            position: relative;
-            z-index: 10;
+            background-color: #000000; height: 40px; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 0 10px; position: relative; z-index: 10;
         }
 
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            font-size: 16px; 
-        }
-        .logo-anon {
-            color: #ff0000; 
-            font-weight: 900;
-        }
-        .logo-media {
-            color: #ffffff;
-            font-weight: 700;
-            margin-left: 3px;
-        }
+        .logo { text-decoration: none; display: flex; align-items: center; font-size: 16px; }
+        .logo-anon { color: #ff0000; font-weight: 900; }
+        .logo-media { color: #ffffff; font-weight: 700; margin-left: 3px; }
 
-        .nav-links {
-            display: flex;
-            gap: 10px; 
-        }
-        
+        .nav-links { display: flex; gap: 10px; }
         .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 10px; 
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            white-space: nowrap; 
-            transition: color 0.3s ease;
+            color: #ffffff; text-decoration: none; font-size: 10px; font-weight: 400;
+            letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; transition: color 0.3s ease;
         }
-        
-                /* Aktif olan (bulunduğumuz) sayfanın sekmesi sürekli kırmızı kalır */
-        .nav-links a.active {
-            color: #ff0000;
-        }
+        .nav-links a.active { color: #ff0000; }
+        .nav-links a:active { color: #cc0000; }
 
-        /* Telefonda tam parmakla basma (tıklama) anında renk tepkisi verir */
-        .nav-links a:active {
-            color: #cc0000;
-        }
-
-        /* GÖRSEL ALANI (Esnek 16:9 Oran) */
         .hero-image {
-            width: 100%;
-            aspect-ratio: 16 / 9; 
-            background-color: #000000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden; 
+            width: 100%; aspect-ratio: 16 / 9; background-color: #000000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden;
         }
 
-        .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            object-position: center;
-            display: block;
+        .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+        /* Geniş ekranlarda sayfanın ortalanması ve yayılmasının engellenmesi */
+        .main-content {
+            width: 100%; max-width: 800px; margin: 0 auto; padding: 40px 20px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
         }
 
-        /* İÇERİK ALANI (Tanıtım Yazıları ve Buton) */
-        .content-area {
-            padding: 50px 20px;
-            text-align: center;
-            max-width: 800px; 
-            margin: 0 auto; 
+        h1 {
+            font-size: 24px; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 20px; line-height: 1.4;
         }
-        
-        .main-title {
-            font-size: 26px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            line-height: 1.4;
+
+        .highlight { color: #ff0000; }
+
+        .description {
+            font-size: 13px; color: rgba(255, 255, 255, 0.8); line-height: 1.6;
+            margin-bottom: 30px; max-width: 600px;
         }
-        
-                .highlight {
-            color: #ff0000;
-            white-space: nowrap; /* Kelimelerin alt satıra bölünmesini kesin olarak engeller */
+
+        .info-container {
+            display: flex; gap: 15px; margin-bottom: 40px; width: 100%;
+            max-width: 500px; justify-content: center;
         }
-      
-        .subtitle {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid #ff0000; padding: 15px; border-radius: 6px; flex: 1;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        
-        /* BİLGİ KARTLARI (Yarı Şeffaf Kutular) */
-        .info-grid {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap; 
-            margin-bottom: 50px;
+
+        .info-label {
+            font-size: 9px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 5px;
         }
-        
-        .info-card {
-            background: rgba(0, 0, 0, 0.5); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: 2px solid #ff0000;
-            padding: 25px 20px;
-            border-radius: 6px;
-            min-width: 160px;
-            flex: 1;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        
-        .info-card h3 {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-        }
-        
-        .info-card p {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-        
-        /* ÇAĞRI BUTONU (Kayıt / Detay) */
+
+        .info-value { font-size: 14px; font-weight: 700; color: #ffffff; }
+
         .cta-button {
-            display: inline-block;
-            background-color: #ff0000;
-            color: #ffffff;
-            padding: 16px 40px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+            background-color: #ff0000; color: #ffffff; text-decoration: none;
+            padding: 15px 30px; font-size: 14px; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 1px; border-radius: 4px; transition: background-color 0.3s;
+            width: 100%; max-width: 300px;
         }
-        
-        .cta-button:hover {
-            background-color: #cc0000;
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4); 
-        }
+
+        .cta-button:active { background-color: #cc0000; }
     </style>
 </head>
 <body>
 
-    <!-- ÜST MENÜ -->
-        <nav>
+    <nav>
         <a href="index.html" class="logo">
             <span class="logo-anon">ANON</span><span class="logo-media">Media</span>
         </a>
         <div class="nav-links">
-            <!-- Ana sayfada olduğumuz için "Ana Sayfa" kırmızı kalacak -->
             <a href="index.html" class="active">Ana Sayfa</a>
-            <!-- Etkinlik sayfasına yönlendirme eklendi -->
             <a href="etkinlik.html">Etkinlik</a>
         </div>
     </nav>
 
-    <!-- 16:9 GÖRSEL ALANI -->
     <div class="hero-image">
-        <img src="image_9.png" alt="ANON Media B1C Afişi" class="hero-img">
+        <!-- Görselin aynı klasörde image_9.png adıyla bulunduğundan emin ol -->
+        <img src="image_9.png" class="hero-img" alt="B1C Kapak">
     </div>
 
-    <!-- TANITIM YAZILARI VE İÇERİK -->
-    <div class="content-area">
-<h1 class="main-title">Yeni Nesil Medya Deneyimine<br><span class="highlight">Hazır Olun</span></h1>
-
-      
-        <p class="subtitle">
+    <main class="main-content">
+        <h1>Yeni Nesil Medya Deneyimine<br><span class="highlight">Hazır Olun</span></h1>
+        
+        <p class="description">
             ANON Media B1C konferans ve özel tanıtım lansmanı, ANON'un geleceğine dair detaylı bir proje sunumunu ve eğitici bir anlatımı kapsayacaktır. Heyecan verici içerikler seni bekliyor.
         </p>
-        
-                <!-- BİLGİ KARTLARI -->
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>Durum</h3>
-                <p>12 Ekim</p> <!-- "Çok Yakında" yerine "12 Ekim" eklendi -->
+
+        <div class="info-container">
+            <div class="info-box">
+                <span class="info-label">Durum</span>
+                <span class="info-value">12 Ekim</span>
             </div>
-            <div class="info-card">
-                <h3>Erişim</h3>
-                <p>Özel Gösterim</p>
+            <div class="info-box">
+                <span class="info-label">Erişim</span>
+                <span class="info-value">Özel Gösterim</span>
             </div>
         </div>
 
-        <!-- BUTON (etkinlik.html dosyasına yönlendirildi) -->
         <a href="etkinlik.html" class="cta-button">Detayları Keşfet</a>
-    </div>
+    </main>
 
 </body>
 </html>
